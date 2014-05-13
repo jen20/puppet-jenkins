@@ -9,6 +9,7 @@ class jenkins::params {
   $service_ensure     = 'running'
   $install_java       = true
   $swarm_version      = '1.9'
+  $plugin_repo        = 'http://updates.jenkins-ci.org/download/plugins'
 }
 
 

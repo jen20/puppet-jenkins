@@ -72,6 +72,7 @@ class jenkins(
   $version            = $jenkins::params::version,
   $lts                = $jenkins::params::lts,
   $repo               = $jenkins::params::repo,
+  $plugin_repo        = $jenkins::params::plugin_repo,
   $service_enable     = $jenkins::params::service_enable,
   $service_ensure     = $jenkins::params::service_ensure,
   $config_hash        = {},
