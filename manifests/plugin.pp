@@ -69,7 +69,7 @@ define jenkins::plugin(
       }
     }
 
-    $plugin_test = "if [ -e ${plugin_dir}/${name}/META-INF/MANIFEST.MF ]; then grep 'Plugin-Version: ${version}' ${plugin_dir}/${name}/META-INF/MANIFEST.MF | sed 's/\r//' | xargs -I{} bash -c 'if [ \"{}\" = \"Plugin-Version: ${version}\" ]; then exit 0; else exit 1; fi'; else exit 1; fi"
+    $plugin_test = "if [ -e ${plugin_dir}/${name}/META-INF/MANIFEST.MF ]; then grep 'Plugin-Version: ${version}' ${plugin_dir}/${name}/META-INF/MANIFEST.MF | sed 's/\r//' | xargs -I{} bash -c 'if [ \\"{}\\" = \\"Plugin-Version: ${version}\\" ]; then exit 0; else exit 1; fi'; else exit 1; fi"
 
     exec { "download-${name}" :
       command    => "rm -rf ${name} ${name}.* && wget --no-check-certificate ${base_url}${plugin}",
