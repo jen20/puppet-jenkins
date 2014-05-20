@@ -74,7 +74,7 @@ define jenkins::plugin(
       cwd        => $plugin_dir,
       require    => [File[$plugin_dir], Package['wget']],
       path       => ['/usr/bin', '/usr/sbin', '/bin'],
-      unless     => "cat ${plugin_dir}/${name}/META-INF/MANIFEST.MF | grep 'Plugin-Version' | awk '{print \$2}' | sed 's/\r//' | xargs -I {} bash -c 'if [ {} = \"${version}\" ]; then exit 0; else exit 1; fi'"
+      unless     => "if [ -e ${plugin_dir}/${name}/META-INF/MANIFEST.MF ]; then cat ${plugin_dir}/${name}/META-INF/MANIFEST.MF | grep 'Plugin-Version' | awk '{print \$2}' | sed 's/\r//' | xargs -I {} bash -c 'if [ {} = \"${version}\" ]; then exit 0; else exit 1; fi'; else exit 1; fi"
     }
 
     file { "${plugin_dir}/${plugin}" :
