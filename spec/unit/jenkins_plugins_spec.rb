@@ -45,11 +45,11 @@ describe Puppet::Jenkins::Plugins do
       it { should be_instance_of Hash }
     end
 
-    context 'when plugins exist' do
-      it 'should generate a list of plugins' do
-        pending 'This is too hard to unit test, feh.'
-      end
-    end
+    #context 'when plugins exist' do
+      #it 'should generate a list of plugins' do
+        #pending 'This is too hard to unit test, feh.'
+      #end
+    #end
   end
 
   describe 'manifest_data' do
