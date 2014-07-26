@@ -10,7 +10,7 @@ describe 'jenkins::plugin' do
 
   describe 'without version' do
     it { should contain_exec('download-myplug').with(
-      :command      => 'rm -rf myplug myplug.* && wget --no-check-certificate http://updates.jenkins-ci.org/latest/myplug.hpi',
+      :command      => 'rm -rf myplug myplug.[hj]pi && wget --no-check-certificate http://updates.jenkins-ci.org/latest/myplug.hpi',
       :environment  => nil
     )}
     it { should contain_file('/var/lib/jenkins/plugins/myplug.hpi')}
@@ -20,7 +20,7 @@ describe 'jenkins::plugin' do
     let(:params) { { :version => '1.2.3' } }
 
     it { should contain_exec('download-myplug').with(
-      :command      => 'rm -rf myplug myplug.* && wget --no-check-certificate http://updates.jenkins-ci.org/download/plugins/myplug/1.2.3/myplug.hpi',
+      :command      => 'rm -rf myplug myplug.[hj]pi && wget --no-check-certificate http://updates.jenkins-ci.org/download/plugins/myplug/1.2.3/myplug.hpi',
       :environment  => nil
     ) }
     it { should contain_file('/var/lib/jenkins/plugins/myplug.hpi')}
